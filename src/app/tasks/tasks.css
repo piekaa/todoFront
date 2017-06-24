@@ -1,0 +1,68 @@
+.main
+{
+	margin-left: 30px;
+	margin-right: 30px;
+	display: flex;
+	background-color: #EEAAAA;
+	align-items: center;
+	flex-direction: column;
+}
+
+.content
+{
+	background-color: #FF0000;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.backButton
+{
+	height: 50px;
+	width: 100%;
+	flex-grow: 1;
+	background-color: #00FF00;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+}
+
+button
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	flex-grow: 1;
+	max-width: 150px;
+	background-color: #2211FF;
+}
+
+.tasks
+{
+	background-color: #FFF777;
+	max-width: 1000px;
+	width:  1000px;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	justify-items: center;
+}
+
+
+.task
+{
+	margin-top: 15px;
+	width: 100%;
+}
+
+.task::after
+{
+	content: "";
+	display: block;
+	height: 1px;
+	width: 96%;
+	background-color: #DDDDDD;
+	margin: auto;
+	margin-top: 15px;
+}
