@@ -1,0 +1,8 @@
+<div class ='main'>
+	<form novalidate (ngSubmit)="onSubmit(task)" [formGroup]="task">
+		<label>Name</label><input formControlName="name" type="text">		
+		<label>Description</label><textarea formControlName="description"> </textarea>
+		<button type='submit'>OK</button>
+		<button type='button'>Cancel</button>
+	</form>	
+</div>

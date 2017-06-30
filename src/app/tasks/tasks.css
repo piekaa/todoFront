@@ -3,17 +3,18 @@
 	margin-left: 30px;
 	margin-right: 30px;
 	display: flex;
-	background-color: #EEAAAA;
+	//background-color: #EEAAAA;
 	align-items: center;
 	flex-direction: column;
 }
 
 .content
 {
-	background-color: #FF0000;
+//	background-color: #FF0000;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	background-color: #FFF777;
 }
 
 .backButton
@@ -21,19 +22,25 @@
 	height: 50px;
 	width: 100%;
 	flex-grow: 1;
-	background-color: #00FF00;
+	//background-color: #00FF00;
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
 }
 
-button
+div.backButton > button 
 {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	flex-grow: 1;
 	max-width: 150px;
-	background-color: #2211FF;
+	background-color: #7777FF;
+	border: none;
+}
+
+div.backButton > button:hover
+{
+	background-color: #4455FF;
 }
 
 .tasks
@@ -65,4 +72,65 @@ button
 	background-color: #DDDDDD;
 	margin: auto;
 	margin-top: 15px;
+}
+
+
+.taskContent
+{
+	padding-left: 20px;
+	padding-right: 20px;
+	display: flex;
+	flex-direction: row;
+}
+
+.taskText
+{
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.taskButton
+{
+	align-self: right;
+	height: 50px;
+}
+
+.taskContentContent
+{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+div.taskButton > button
+{ 
+	background-color: #55EE55;
+	border:  none;
+	height: 70px;
+	width: 30px;
+}
+
+div.taskButton > button:hover
+{ 
+	background-color: #00EE00;
+}
+
+
+.taskName
+{
+	font-size: 2em;
+	font-weight: 500;
+}
+
+.taskDescription
+{
+	font-size: 1.3em;
+	flex-grow: 1;
+}
+
+.isTaskDone
+{ 
+	padding-left: 15px;
+	padding-right: 15px;
 }

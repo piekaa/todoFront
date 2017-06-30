@@ -1,25 +1,42 @@
 <div class = 'main'>
 	<div class='content'>
+	{{value}}
 		<div class = 'backButton'>
-			<button>
-				back button
+			<button> 
+			Parent Task
 			</button>
 		</div>
 		<div class='tasks'>
-			<div class='task'>
-			taksaaa
-			</div>
-			<div class='task'>
-			takss
-			</div>
-			<div class='task'>
-			tasa
-			</div>
-			<div class='task'>
-			taksa
-			</div>
-			<div class='task'>
-			taks
+			<div *ngFor="let task of tasks" class='task'>
+				<div class ='taskContent'>
+
+					<div class = 'taskText'>
+						<div class="taskName">
+						{{task.name}}
+						</div>
+						<div class = 'taskContentContent'>
+
+							<div class = "taskDescription">
+							{{task.description}}
+							</div>
+							<div *ngIf="task.isDone" class = 'isTaskDone'>
+							done
+							</div>
+						</div>	
+					</div>
+					<div class = 'taskButton'>
+						
+						<button>
+						:)
+						</button>
+						<button>
+						:(
+						</button>
+						<button>
+						>	
+						</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
