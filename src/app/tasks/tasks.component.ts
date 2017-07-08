@@ -1,24 +1,23 @@
 import { Component } from '@angular/core';
-import {TasksService} from '../services/tasks_service' 
-import {Task} from '../model/task';
+import { TasksService } from '../services/tasks_service'
+import { Task } from '../model/task';
 @Component({
-  selector: 'tasks',
-  templateUrl: './tasks.html',
-  styleUrls: ["./tasks.css"],
-  providers: [TasksService]
+	selector: 'tasks',
+	templateUrl: './tasks.html',
+	styleUrls: ['./tasks.css'],
+	providers: [TasksService]
 })
-export class TasksComponent 
-{
+export class TasksComponent {
 	value: string = "";
-	tasks : Task[];
+	tasks: Task[];
 
-	constructor(private tasksService: TasksService)
-	{
+	constructor(private tasksService: TasksService) {
 
 	}
 
-	ngOnInit(): void{ 
-		this.value = this.tasksService.test();
+	ngOnInit(): void {
+		this.value =
+this.tasksService.test();
 		this.tasks = this.tasksService.getTasks();
 	}
 }
