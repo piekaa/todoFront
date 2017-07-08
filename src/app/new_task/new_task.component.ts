@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Task} from '../tasks/tasks.component';
+import {Task} from '../model/task';
 @Component({
   selector: 'tasks',
   templateUrl: './new_task.html',
