@@ -2,6 +2,7 @@ export class Task
 {
 	name : string;
 	description: string;
-	timestamp : number;
-	isDone : boolean;
+	id : number;
+	done : boolean;
+	parent_task : number;
 }

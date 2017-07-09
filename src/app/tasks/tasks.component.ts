@@ -10,14 +10,19 @@ import { Task } from '../model/task';
 export class TasksComponent {
 	value: string = "";
 	tasks: Task[];
+	errorMessage : string;
 
 	constructor(private tasksService: TasksService) {
 
 	}
 
 	ngOnInit(): void {
-		this.value =
-this.tasksService.test();
-		this.tasks = this.tasksService.getTasks();
+		this.value = this.tasksService.test();
+
+		this.tasksService.getTasks(0)
+						 .subscribe(
+							tasks => this.tasks = tasks,
+							error => this.errorMessage = <any>error);
+						 
 	}
 }
