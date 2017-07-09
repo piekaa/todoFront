@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TasksService } from '../services/tasks_service'
 import { Task } from '../model/task';
+import { ActivatedRoute } from '@angular/router';
 @Component({
 	selector: 'tasks',
 	templateUrl: './tasks.html',
@@ -8,21 +9,34 @@ import { Task } from '../model/task';
 	providers: [TasksService]
 })
 export class TasksComponent {
-	value: string = "";
 	tasks: Task[];
 	errorMessage : string;
 
-	constructor(private tasksService: TasksService) {
+	id : number;
+	sub :any;
+
+	constructor(private tasksService: TasksService, private route : ActivatedRoute) {
+		this.id = 0 ;
 
 	}
 
 	ngOnInit(): void {
-		this.value = this.tasksService.test();
+		this.sub = this.route.params.subscribe
+								(
+									params => {
+										if( params['id'])
+											this.id = params['id'];
+										this.getTasks();									
+									}
+								);
 
-		this.tasksService.getTasks(0)
+	}
+
+	getTasks() : void
+	{
+		this.tasksService.getTasks(this.id)
 						 .subscribe(
 							tasks => this.tasks = tasks,
 							error => this.errorMessage = <any>error);
-						 
 	}
 }

@@ -1,6 +1,5 @@
 <div class = 'main'>
-	<div class='content'>
-	{{value}}
+	<div class='content'> 
 		<div class = 'backButton'>
 			<button> 
 			Parent Task
@@ -39,5 +38,10 @@
 				</div>
 			</div>
 		</div>
+
+		<button routerLink="/todo/new/{{id}}"  (click)="newTask()"> 
+			New task
+		</button>
+
 	</div>
 </div>

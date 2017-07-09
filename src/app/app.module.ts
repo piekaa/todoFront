@@ -9,8 +9,9 @@ import {HttpModule, JsonpModule} from '@angular/http';
 
 
 const appRoutes: Routes = [
-  { path: 'todo', component: TasksComponent },
-  { path: 'todo/new', component: NewTaskComponent },
+    { path: 'todo/:id', component: TasksComponent },
+    { path: 'todo', component: TasksComponent },
+    { path: 'todo/new/:id', component: NewTaskComponent }
 ];
 
 @NgModule({
