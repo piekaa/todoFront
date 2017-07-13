@@ -1,7 +1,7 @@
 <div class = 'main'>
 	<div class='content'> 
-		<div class = 'backButton'>
-			<button> 
+		<div *ngIf="(currentTask.id>0)" class = 'backButton'>
+			<button (click)="parentTask()">
 			Parent Task
 			</button>
 		</div>
@@ -31,7 +31,7 @@
 						<button>
 						:(
 						</button>
-						<button>
+						<button (click)="subtask(task.id)">
 						>	
 						</button>
 					</div>
@@ -39,7 +39,7 @@
 			</div>
 		</div>
 
-		<button routerLink="/todo/new/{{id}}"  (click)="newTask()"> 
+		<button routerLink="/todo/new/{{id}}" > 
 			New task
 		</button>
 

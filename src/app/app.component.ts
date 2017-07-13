@@ -3,10 +3,8 @@ import { TasksComponent} from "./tasks/tasks.component";
 
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>
+  template: `
   <router-outlet></router-outlet>
-
-
   `
   , 
 })
