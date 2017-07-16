@@ -44,9 +44,18 @@ export class TasksComponent {
   }
 
 
+  getTaskColor(done : boolean)
+  {
+	if( done )
+		return "#6de236"
+	return "transparent"  
+}
 
-	taskDone(id : number)
+
+
+	taskDone(event : Event, id : number)
 	{
+		event.stopPropagation();
 		this.tasksService.setDone(id)
 							.subscribe(data => { 
 								         this.getTasks();
@@ -55,8 +64,9 @@ export class TasksComponent {
 								      }); 
 	}
 
-	taskUndone(id : number)
+	taskUndone(event : Event, id : number)
 	{
+		event.stopPropagation();
 		this.tasksService.setUndone(id) 
 							.subscribe(data => {
 								        this.getTasks();

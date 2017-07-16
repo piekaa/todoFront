@@ -11,56 +11,43 @@
 .content
 {
 	/*background-color: #FF0000;*/
+	width: 90%;
 	display: flex;
 	align-items: center;
-	flex-direction: column;
-	background-color: #FFF777;
+	flex-direction: column; 
+	background-color: #F5F5F5;
+	border-radius: 10px;
+	box-shadow: 10px 10px 15px #2572a3;
 }
-
-.backButton
-{
-	height: 50px;
-	width: 100%;
-	flex-grow: 1;
-	/*background-color: #00FF00;*/
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
-}
-
-div.backButton > button 
-{
-	margin-top: 5px;
-	margin-bottom: 5px;
-	flex-grow: 1;
-	max-width: 150px;
-	background-color: #7777FF;
-	border: none;
-}
-
-div.backButton > button:hover
-{
-	background-color: #4455FF;
-}
-
+ 
+  
 .tasks
-{
-	background-color: #FFF777;
-	max-width: 1000px;
-	width:  1000px;
+{ 
+	width: 100%; 
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	justify-items: center;
+	/*background-color: blue;*/
+	
+}
+
+.done
+{
+	background-color: green;
 }
 
 
 .task
-{
-	margin-top: 15px;
+{ 
+	padding-top: 15px;
 	width: 100%;
+}
+
+.task:hover
+{
+	background-color: #DDDDDD !important;
 }
 
 .task::after
@@ -92,8 +79,7 @@ div.backButton > button:hover
 
 .taskButton
 {
-	align-self: right;
-	height: 50px;
+	align-self: right; 
 }
 
 .taskContentContent
@@ -105,15 +91,17 @@ div.backButton > button:hover
 
 div.taskButton > button
 { 
-	background-color: #55EE55;
-	border:  none;
-	height: 70px;
+	background-color: #0d86e2;
+	border:  none; 
+	height: 50px;
 	width: 30px;
+	margin-right: 1em;
+	border-radius: 20px;
 }
 
 div.taskButton > button:hover
 { 
-	background-color: #00EE00;
+	background-color: #0068b7;
 }
 
 
