@@ -28,6 +28,18 @@ export class TasksService{
 					.catch(this.handleError);
   }
 
+	setDone(id : Number) : Observable<any>
+	{
+		return this.http.put(AppConst.endpoint + 'task/done/'+id, {} );
+	}
+
+	setUndone(id : Number ) : Observable<any>
+	{
+		return this.http.put(AppConst.endpoint + 'task/undone/'+id, {} );
+	}
+
+
+
 	addTask(name : string, description : string, parentId : number) : Observable<any>
 	{
 
@@ -50,8 +62,6 @@ export class TasksService{
 
 
 	private extractData(res: Response) {
-	
-	console.log( "Response: " + res.json() );
     return res.json() || { } ;
   }
  

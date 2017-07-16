@@ -44,16 +44,13 @@ export class NewTaskComponent
   }
 
 	onSubmit( {value, valid} : { value: Task, valid: boolean})
-	{
-		
-		console.log("before add");
+	{ 
 		this.tasksService.addTask(value.name, value.description, this.id )
 							.subscribe(data => {
 								          this.backToList();
 								      }, error => {
 								          console.log(error.json());
-								      });
-		console.log("after add"); 
+								      }); 
 	}
 
 	backToList()

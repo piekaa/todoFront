@@ -15,20 +15,21 @@
 						</div>
 						<div class = 'taskContentContent'>
 
+							
 							<div class = "taskDescription">
 							{{task.description}}
 							</div>
-							<div *ngIf="task.isDone" class = 'isTaskDone'>
+							<div *ngIf="task.done" class = 'isTaskDone'>
 							done
 							</div>
 						</div>	
 					</div>
 					<div class = 'taskButton'>
 						
-						<button>
+						<button (click)="taskDone(task.id)" >
 						:)
 						</button>
-						<button>
+						<button (click)="taskUndone(task.id)" >
 						:(
 						</button>
 						<button (click)="subtask(task.id)">

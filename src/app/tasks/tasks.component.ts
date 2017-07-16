@@ -43,6 +43,29 @@ export class TasksComponent {
     this.sub.unsubscribe();
   }
 
+
+
+	taskDone(id : number)
+	{
+		this.tasksService.setDone(id)
+							.subscribe(data => { 
+								         this.getTasks();
+								      }, error => { 
+								          console.log(error.json());
+								      }); 
+	}
+
+	taskUndone(id : number)
+	{
+		this.tasksService.setUndone(id) 
+							.subscribe(data => {
+								        this.getTasks();
+								      }, error => {
+								          console.log(error.json());
+								      }); 
+	}
+
+
 	getTasks() : void
 	{
 		this.tasksService.getTasks(this.id)

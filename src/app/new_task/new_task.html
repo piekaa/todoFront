@@ -1,8 +1,24 @@
 <div class ='main'>
-	<form novalidate (ngSubmit)="onSubmit(task)" [formGroup]="task">
-		<label>Name</label><input formControlName="name" type="text">		
-		<label>Description</label><textarea formControlName="description"> </textarea>
-		<button type='submit'>OK</button>
-		<button (click)="backToList()" type='button'>Cancel</button>
-	</form>	
+
+	<div class='content'>
+		<form novalidate (ngSubmit)="onSubmit(task)" [formGroup]="task">
+			<div class = 'inputContainer'>
+				<label>Name</label>
+				<div class = 'input' >
+					<input class='big' formControlName="name" type="text">
+				</div>
+			</div>		
+			<div class = 'inputContainer'>
+				<label>Description</label>
+				<div class ='input'>
+					<textarea class = 'big' formControlName="description"> </textarea>
+				</div >
+			</div>
+			<div class = 'buttons' >
+				<button class='ok' type='submit'>OK</button>
+				<button class='cancel'  (click)="backToList()" type='button'>Cancel</button>
+			</div>
+		</form>	
+	</div>
+
 </div>

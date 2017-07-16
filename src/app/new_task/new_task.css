@@ -1,4 +1,49 @@
-html
+.main
+{ 
+	display: flex;
+	justify-content: center;
+}
+
+
+.content
 {
-	background-color: red;
+	background-color: #EEEEEE;	
+	display: flex;
+	flex-direction: column;
+	padding: 1em;
+	flex-grow: 1;
+	max-width: 600px;
+	border-radius: 3px;
+	box-shadow: 8px 8px 10px #2572a3;
+}
+
+
+.inputContainer
+{ 
+	display: flex;
+	flex-direction: column;
+	font-size: 1.2em;
+	color: #666666;
+	font-weight: 300;
+	padding-bottom: 0.5em;
+}
+
+
+.input
+{
+	display: flex;
+	flex-direction: row;
+}
+
+label
+{
+	margin-bottom: 0.3em;
+}
+
+
+
+.buttons
+{
+	display: flex;
+	justify-content: space-around;
 }

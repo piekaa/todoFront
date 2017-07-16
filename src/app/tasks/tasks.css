@@ -3,14 +3,14 @@
 	margin-left: 30px;
 	margin-right: 30px;
 	display: flex;
-	//background-color: #EEAAAA;
+	/*background-color: #EEAAAA;*/
 	align-items: center;
 	flex-direction: column;
 }
 
 .content
 {
-//	background-color: #FF0000;
+	/*background-color: #FF0000;*/
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -22,7 +22,7 @@
 	height: 50px;
 	width: 100%;
 	flex-grow: 1;
-	//background-color: #00FF00;
+	/*background-color: #00FF00;*/
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
