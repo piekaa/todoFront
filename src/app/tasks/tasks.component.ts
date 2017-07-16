@@ -44,11 +44,11 @@ export class TasksComponent {
   }
 
 
-  getTaskColor(done : boolean)
+  getTaskClass(done : boolean)
   {
 	if( done )
-		return "#6de236"
-	return "transparent"  
+		return "taskDone"
+	return ""  
 }
 
 

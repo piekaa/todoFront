@@ -1,21 +1,29 @@
 <div class = 'main'>
 	<div class='content'> 
-		<div *ngIf="(currentTask.id>0)" class = 'backButton'>
-			<button class='cancel' (click)="parentTask()">
-			Up
-			</button>
-		</div>
+		 <div class = 'top' *ngIf="(currentTask.id>0)" > 
+
+			<div class = 'currentTask' >
+				<div class ='currentTaskName' >{{currentTask.name}}</div>
+				<div class = 'currentTaskDescription'>{{currentTask.description}}</div>
+			</div>
+
+			<div class = 'topBotButton'>
+				<button class='cancel' (click)="parentTask()">
+				Up
+				</button>
+			</div>
+		 </div> 
 		<div class='tasks'>
-			<div *ngFor="let task of tasks" (click)='subtask(task.id)' [style.background-color]="(getTaskColor(task.done))" class='task'>
+			<div *ngFor="let task of tasks" (click)='subtask(task.id)' [ngClass]="(getTaskClass(task.done))" class='task'>
 				<div  class ='taskContent'>
 
 
 					<div class = 'taskButton'>
-						<button *ngIf="!task.done" (click)="taskDone($event, task.id)" >
-						:)
+						<button *ngIf="!task.done" class = 'setDone' (click)="taskDone($event, task.id)" >
+						✔
 						</button>
-						<button *ngIf="task.done" (click)="taskUndone($event, task.id)" >
-						:(
+						<button *ngIf="task.done" class = 'setUndone' (click)="taskUndone($event, task.id)" >
+						X
 						</button> 
 					</div>
 
@@ -35,9 +43,11 @@
 			</div>
 		</div>
 
-		<button class ='ok' routerLink="/todo/new/{{id}}" > 
-			New task
-		</button>
+		<div class = 'topBotButton'>
+			<button class ='ok' routerLink="/todo/new/{{id}}" > 
+				New task
+			</button>
+		</div>
 
 	</div>
 </div>
