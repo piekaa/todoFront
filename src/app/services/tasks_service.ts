@@ -4,7 +4,7 @@ import {Task} from '../model/task';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import * as AppConst from '../app.const';
+import * as AppConst from '../app.const'; 
 @Injectable()
 export class TasksService{
 
@@ -14,33 +14,44 @@ export class TasksService{
 
 	}
 
-	getTask(id : Number) : Observable<Task>
+
+
+	getEndpoint(url: string)
 	{
-		return this.http.get(AppConst.endpoint + 'task/'+id)
+		if( url.split(",")[0] == "n" )
+			return AppConst.endpoint;
+		return AppConst.endpointNotKoba;
+	}
+
+
+	getTask(id : Number, url: string) : Observable<Task>
+	{
+		return this.http.get(this.getEndpoint(url) + 'task/'+id)
 					.map(this.extractData)
 					.catch(this.handleError);
   }
 
-	getTasks(id : Number) : Observable<Task[]>
-	{
-		return this.http.get(AppConst.endpoint + 'subtasks/'+id)
+	getTasks(id : Number, url: string) : Observable<Task[]>
+	{ 
+		;
+		return this.http.get(this.getEndpoint(url) + 'subtasks/'+id)
 					.map(this.extractData)
 					.catch(this.handleError);
   }
 
-	setDone(id : Number) : Observable<any>
+	setDone(id : Number, url: string) : Observable<any>
 	{
-		return this.http.put(AppConst.endpoint + 'task/done/'+id, {} );
+		return this.http.put(this.getEndpoint(url) + 'task/done/'+id, {} );
 	}
 
-	setUndone(id : Number ) : Observable<any>
+	setUndone(id : Number, url: string) : Observable<any>
 	{
-		return this.http.put(AppConst.endpoint + 'task/undone/'+id, {} );
+		return this.http.put(this.getEndpoint(url) + 'task/undone/'+id, {} );
 	}
 
 
 
-	addTask(name : string, description : string, parentId : number) : Observable<any>
+	addTask(name : string, description : string, parentId : number, url: string) : Observable<any>
 	{
 
 		let timestamp = new Date().getTime();
@@ -50,14 +61,8 @@ export class TasksService{
 		task.name = name;
 		task.parent_task = parentId;
 		task.id = timestamp;
-
-		
-		console.log("add task method:");
-		console.log( task );
-		
-		console.log( AppConst.endpoint + 'task' );
-
-		return this.http.post(AppConst.endpoint + 'task', task );
+ 
+		return this.http.post(this.getEndpoint(url) + 'task', task );
   }
 
 

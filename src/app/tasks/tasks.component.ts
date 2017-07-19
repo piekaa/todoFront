@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { TasksService } from '../services/tasks_service'
+import { RouteService } from '../services/route_service'
 import { Task } from '../model/task';
 import { Router, ActivatedRoute } from '@angular/router';
 @Component({
 	selector: 'tasks',
 	templateUrl: './tasks.html',
 	styleUrls: ['./tasks.css'],
-	providers: [TasksService]
+	providers: [TasksService, RouteService]
 })
 export class TasksComponent {
 	tasks: Task[];
@@ -15,8 +16,10 @@ export class TasksComponent {
 
 	id : number;
 	sub :any;
+	sub2 :any;
+	url : string;
 
-	constructor(private tasksService: TasksService, private route : ActivatedRoute, private router : Router) {
+	constructor(private tasksService: TasksService, private route : ActivatedRoute, private router : Router, private routerService : RouteService) {
 		this.id = 0 ; 
 	}
 
@@ -31,16 +34,23 @@ export class TasksComponent {
 									params => {
 										if( params['id'])
 											this.id = params['id']; 
-										this.getTasks();	
-										this.getCurrentTask();		
 
+										this.sub2 = this.route.url.subscribe
+										(
+											url => {
+												this.url = url.toString();	
+											this.getTasks();	
+											this.getCurrentTask();	
+		
+											}
+										);
 									}
 								);
-
 	}
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+	this.sub.unsubscribe();
+	this.sub2.unsubscribe();
   }
 
 
@@ -56,7 +66,7 @@ export class TasksComponent {
 	taskDone(event : Event, id : number)
 	{
 		event.stopPropagation();
-		this.tasksService.setDone(id)
+		this.tasksService.setDone(id, this.url)
 							.subscribe(data => { 
 								         this.getTasks();
 								      }, error => { 
@@ -67,7 +77,7 @@ export class TasksComponent {
 	taskUndone(event : Event, id : number)
 	{
 		event.stopPropagation();
-		this.tasksService.setUndone(id) 
+		this.tasksService.setUndone(id, this.url) 
 							.subscribe(data => {
 								        this.getTasks();
 								      }, error => {
@@ -78,7 +88,7 @@ export class TasksComponent {
 
 	getTasks() : void
 	{
-		this.tasksService.getTasks(this.id)
+		this.tasksService.getTasks(this.id, this.url)
 						 .subscribe(
 							tasks => this.tasks = tasks,
 							error => this.errorMessage = <any>error);
@@ -86,7 +96,7 @@ export class TasksComponent {
 
 	getCurrentTask() : void
 	{
-		this.tasksService.getTask(this.id)
+		this.tasksService.getTask(this.id, this.url)
 						 .subscribe(
 							task => this.currentTask = task,
 							error => this.errorMessage = <any>error);
@@ -95,14 +105,17 @@ export class TasksComponent {
 
 	subtask(id : number) : void
 	{
-		this.router.navigate( ["/todo/", id] );
+		this.router.navigate( [this.routerService.getUrl("todo", this.url), id] );
 	}
 
 	parentTask() : void
+	{ 
+		this.router.navigate( [this.routerService.getUrl("todo", this.url), this.currentTask.parent_task] );
+	}
+
+	toNewTask(id : number)
 	{
-		console.log( this.currentTask );
-		console.log("go to parent task");
-		this.router.navigate( ["/todo/", this.currentTask.parent_task] );
+		this.router.navigate( [this.routerService.getUrl("todo/new", this.url), id] );
 	}
 
 
