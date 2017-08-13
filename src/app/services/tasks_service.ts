@@ -18,9 +18,11 @@ export class TasksService{
 
 	getEndpoint(url: string)
 	{
-		if( url.split(",")[0] == "n" )
-			return AppConst.endpoint;
-		return AppConst.endpointNotKoba;
+		return "http://" +window.location.hostname + ":" + AppConst.backendPort + "/api/"
+	// console.log( )
+	// 	if( url.split(",")[0] == "n" )
+	// 		return AppConst.endpoint;
+	// 	return AppConst.endpointNotKoba;
 	}
 
 

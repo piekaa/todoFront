@@ -35,8 +35,7 @@ export class NewTaskComponent
 			name: new FormControl(''),
 			description: new FormControl('')
 		});
-
-
+ 
 		this.sub = this.route.params.subscribe
 								(
 									params => {
@@ -54,7 +53,7 @@ export class NewTaskComponent
 
 	}
 
-  ngOnDestroy() {
+  ngOnDestroy() { 
 	this.sub.unsubscribe();
 	this.sub2.unsubscribe();
   }

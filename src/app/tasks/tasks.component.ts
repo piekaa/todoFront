@@ -14,43 +14,54 @@ export class TasksComponent {
 	errorMessage : string; 
 	currentTask : Task;
 
-	id : number;
-	sub :any;
-	sub2 :any;
-	url : string;
-
+	id : number
+	sub :any
+	sub2 :any
+	url : string
+	subCount : number
 	constructor(private tasksService: TasksService, private route : ActivatedRoute, private router : Router, private routerService : RouteService) {
 		this.id = 0 ; 
 	}
 
 	ngOnInit(): void {
-
-
-		this.currentTask = new Task();
-		this.currentTask.id = 0;
-
-		this.sub = this.route.params.subscribe
-								(
-									params => {
-										if( params['id'])
-											this.id = params['id']; 
-
-										this.sub2 = this.route.url.subscribe
-										(
-											url => {
-												this.url = url.toString();	
-											this.getTasks();	
-											this.getCurrentTask();	
 		
-											}
-										);
-									}
-								);
+		this.subCount = 0
+		this.currentTask = new Task();
+		this.currentTask.id = 0; 
+		this.sub = this.route.params.subscribe
+											(
+												params => {
+													if( params['id'])
+														this.id = params['id'];  
+														this.loadAll()
+												}
+											);
+
+		this.sub2 = this.route.url.subscribe
+											(
+												url => { 
+													this.url = url.toString()
+													this.loadAll()
+												}
+											);
 	}
 
-  ngOnDestroy() {
-	this.sub.unsubscribe();
+
+  loadAll(){ 
+		this.subCount++
+
+		if( this.subCount == 2)
+		{
+			this.getTasks();	
+			this.getCurrentTask();
+			this.subCount = 0
+		}	
+  }
+
+  ngOnDestroy() {  
 	this.sub2.unsubscribe();
+	this.sub.unsubscribe();
+	
   }
 
 
