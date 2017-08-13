@@ -5,7 +5,7 @@ export class RouteService{
     getUrl(path : string, url : string) : string
     { 
         let host = url.split(",")[0]; 
-        return host + "/" + path;
+        return "/" + path;
     }
 
 }
