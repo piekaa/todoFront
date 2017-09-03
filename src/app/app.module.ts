@@ -12,6 +12,7 @@ const appRoutes: Routes = [
     { path: 'todo/:id', component: TasksComponent },
     { path: 'todo', component: TasksComponent },
     { path: 'todo/new/:id', component: NewTaskComponent },
+    { path: '', component: TasksComponent },
 ];
 
 @NgModule({

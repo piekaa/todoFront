@@ -1,5 +1,13 @@
 <div class = 'main'>
+
+
+	<div class = 'header'>
+		<button class = 'headerButton' *ngIf="hideDone" (click)='hideDone = false' >Show done</button>
+		<button class = 'headerButton' *ngIf="!hideDone" (click)='hideDone = true'>Hide done</button>
+	</div>
+
 	<div class='content'> 
+
 		 <div class = 'top' *ngIf="(currentTask.id>0)" > 
 
 			<div class = 'currentTask' >
@@ -14,33 +22,32 @@
 			</div>
 		 </div> 
 		<div class='tasks'>
-			<div *ngFor="let task of tasks" (click)='subtask(task.id)' [ngClass]="(getTaskClass(task.done))" class='task'>
-				<div  class ='taskContent'>
-
-
-					<div class = 'taskButton'>
-						<button *ngIf="!task.done" class = 'setDone' (click)="taskDone($event, task.id)" >
-						✔
-						</button>
-						<button *ngIf="task.done" class = 'setUndone' (click)="taskUndone($event, task.id)" >
-						X
-						</button> 
-					</div>
-
-
-					<div class = 'taskText'>
-						<div class="taskName">
-						{{task.name}}
+			<ng-container *ngFor="let task of tasks">
+				<div *ngIf="(!task.done && hideDone) || !hideDone" (click)='subtask(task.id)' [ngClass]="(getTaskClass(task.done))" class='task'>
+					<div  class ='taskContent' >
+						<div class = 'taskButton'>
+							<button *ngIf="!task.done" class = 'setDone' (click)="taskDone($event, task.id)" >
+							✔
+							</button>
+							<button *ngIf="task.done" class = 'setUndone' (click)="taskUndone($event, task.id)" >
+							X
+							</button> 
 						</div>
-						<div class = 'taskContentContent'>							
-							<div class = "taskDescription">
-							{{task.description}}
-							</div> 
-						</div>	
+
+
+						<div class = 'taskText'>
+							<div class="taskName">
+							{{task.name}}
+							</div>
+							<div class = 'taskContentContent'>							
+								<div class = "taskDescription">
+								{{task.description}}
+								</div> 
+							</div>	
+						</div>
 					</div>
-					
 				</div>
-			</div>
+			</ng-container>
 		</div>
 
 		<div class = 'topBotButton'>

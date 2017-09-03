@@ -6,6 +6,32 @@
 	flex-direction: column;
 }
 
+.header
+{
+	height: 50px;
+	width: 100%;
+	margin-bottom: 3px;
+	max-width: 1000px;
+	display: flex;
+	background-color: #F5F5F5;
+	box-shadow: 10px 10px 15px #2572a3;
+	justify-content: center;
+}
+
+
+.headerButton
+{
+	border: none;
+	background-color: #5588FF;
+	margin-left: 2px;
+	font-size: 1.3em;
+}
+.headerButton:hover
+{
+	background-color: #88AAFF;
+}
+
+
 .content
 {
 	/*background-color: #FF0000;*/

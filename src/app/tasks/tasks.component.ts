@@ -13,7 +13,9 @@ export class TasksComponent {
 	tasks: Task[];
 	errorMessage : string; 
 	currentTask : Task;
-
+	
+	hideDone : boolean;
+	
 	id : number
 	sub :any
 	sub2 :any
@@ -24,7 +26,7 @@ export class TasksComponent {
 	}
 
 	ngOnInit(): void {
-		
+		this.hideDone = true;
 		this.subCount = 0
 		this.currentTask = new Task();
 		this.currentTask.id = 0; 
